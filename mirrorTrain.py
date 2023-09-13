@@ -3,6 +3,9 @@ import sys
 
 ## 빛의 속도는 어느 관성계에서 관측하든 동일하게 관측됨.
 ## "관성계"는 일정한 속도로 달리는 열차와 같이 속도의 변화가 없는 공간.
+## 이 코드에서의 관성계는 '박스'
+
+# 박스 내부에서의 빛의 이동거리 = Bounce * BoxDistance
 
 # 초기화
 pygame.init()
@@ -13,7 +16,7 @@ screen_height = 800
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Gravity Refraction Simulation")
 
-myFont = pygame.font.SysFont(None, 30) #(글자체, 글자크기) None=기본글자체
+myFont = pygame.font.SysFont(None, 30) # (글자체, 글자크기) None = 기본글자체
 
 # 색상
 white = (255, 255, 255)
@@ -28,23 +31,21 @@ Object_Xpos = 0 # 빛의 시작 x좌표
 
 # 박스 변수
 xT = Object_Xpos
-Box_speed = 3 # 박스의 속도 [단 박스의 속도는 빛보다 빠를 수 없음]
+Box_speed = 3 # 박스의 속도 [0 <= Box_speed < light_speed]
 vxT = Box_speed
-BoxDistance = 150 #박스사이의 거리
+BoxDistance = 200 # 박스사이의 거리
 
 # BLUE 시작 위치와 속도 설정
 xb = Object_Xpos
 yb = screen_height
 vxb = light_speed
-vxy = light_speed
 
 # RED 시작 위치와 속도 설정
 xr = Object_Xpos
 yr = screen_height
 vxr = light_speed
-vxy = light_speed
 
-# 기록
+# Log
 LengthLog_B = 0
 LengthLog_R = 0
 BounceInt = 0
@@ -84,14 +85,14 @@ while running:
             xb += vxb
             xr += vxr
             
-            #이동 거리 기록
+            # 이동 거리 기록
             LengthLog_R = LengthLog_R + abs(vxr)
             LengthLog_B = xb
 
             # 박스 이동 [박스사이의 거리 : 150]- 상수
             xT += vxT
 
-            # Red 화면 경계처리
+            # Red 박스 경계처리
             if xr >= int(xT+BoxDistance): #screen_height
                 xr = int(xT+BoxDistance)
                 vxr = -vxr
