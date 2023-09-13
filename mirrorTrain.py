@@ -113,6 +113,7 @@ while running:
         if xb >= screen_width: #screen_height
             xb = screen_width
             BluePosCheck = False
+            StringOutput(50, 170, "Red_Pos : ", xr - xT) # xr: RedPos, xT: BoxPos
         else:
             LengthLog_B = LengthLog_B + 1 
 
