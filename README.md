@@ -17,3 +17,9 @@ pygame 모듈을 활용.
 ++[Bounce = 박스 내부에서 빛이 부딪힌 횟수. / BoxDistance = 두 초록색 경계사이의 거리. +BoxDistance는 distance between bars와 같다. / Red_pos는 관성계 내부에서 Red의 마지막 위치이다.]
 
 -관성계 외부에서 움직이는 빛과 관성계 내부에서 움직이는 빛을 관측하는 위치에 따라 비교하여 시간수축에 대해서 알아보자.
+
+작성자의 실험환경: 
+-VisualStudioCode
+-Window 10, 
+-python 3.8
+-pip 21.0.1
